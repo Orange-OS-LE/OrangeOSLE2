@@ -11,16 +11,23 @@ os.system("pacman -S --noconfirm gnome")
 os.system("systemctl enable gdm.service")
 
 os.system("pacman -S --noconfirm xdg-utils")
-os.system(
-    "curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/apps/ocular/ocular.png > ocular.png"
-)
-os.system("cp ocular.png /opt/ocular.png")
-os.system("rm ocular.png")
 
-os.system(
-    "curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/apps/ocular/Ocular.desktop > Ocular.desktop"
-)
-os.system("cp Ocular.desktop /usr/share/applications/")
-os.system("rm Ocular.desktop")
+
+def install_app(name):
+    os.system(
+        f"curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/apps/{name}/{name}.png > {name}.png"
+    )
+    os.system("cp {name}.png /opt/{name}.png")
+    os.system("rm {name}.png")
+
+    os.system(
+        "curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/apps/{name}/{name}.desktop > {name}.desktop"
+    )
+    os.system("cp {name}.desktop /usr/share/applications/")
+    os.system("rm {name}.desktop")
+
+
+install_app("ocular")
+install_app("scratchstats")
 
 print('You can now reboot by running "sudo reboot -h now"')
