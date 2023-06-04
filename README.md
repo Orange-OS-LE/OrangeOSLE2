@@ -11,4 +11,5 @@ curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/install.py 
 ```
 And after the install, reboot then run this: 
 ```
-curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/postinstall.py > postinstall.py && python3 postinstall.py
+sudo curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/postinstall.py > postinstall.py && python3 postinstall.py
+```
