@@ -17,7 +17,6 @@ This program is an installer for Orange OS LE 2, you can find more information i
 """
 
 
-
 import sys, os
 
 hard_drive = ""
@@ -35,7 +34,7 @@ def ui():
 
     hard_drive = input("Please input your disk drive file, like /dev/sda: ")
     host_name = input(
-    "Please enter the name you want to give your computer (a.k.a your hostname): "
+        "Please enter the name you want to give your computer (a.k.a your hostname): "
     )
     keyboard_layout = input("Now enter your keyboard layout, like uk or us: ")
 
@@ -80,9 +79,10 @@ def ui():
     user_creds.write("]\n}")
     user_creds.close()
 
+
 def config_file():
     global hard_drive, host_name, keyboard_layout, language, time_zone, location
-    config = open(sys.argv[1], 'r')
+    config = open(sys.argv[1], "r")
     hard_drive = config.readline().replace("\n", "")
     host_name = config.readline().replace("\n", "")
     keyboard_layout = config.readline().replace("\n", "")
@@ -115,8 +115,6 @@ def config_file():
             user_creds.write(",\n")
     user_creds.write("]\n}")
     user_creds.close()
-
-
 
 
 if sys.argv.__len__() == 2:
@@ -158,7 +156,7 @@ user_config.write(
 "ntp": true,
 "plugin": null,
 "profile": {'{'}
-    "path": "/usr/lib/python3.10/site-packages/archinstall/profiles/minimal.py"
+    "path": "/usr/lib/python3.11/site-packages/archinstall/profiles/minimal.py"
 {'}'},
 "script": "guided",
 "silent": false,
@@ -175,7 +173,7 @@ user_config.close()
 print("Now we will setup the disks for you. Unfourtuanatley, we can't offer to let you")
 print("do the disk partioning, but we might offer this in future.")
 confirm_installation = input(
-    "This will delete all data on the disk you have chosen,\nIf you agree to the conditions, submit with a \"Y\". Otherwise, submit with any other letter."
+    'This will delete all data on the disk you have chosen,\nIf you agree to the conditions, submit with a "Y". Otherwise, submit with any other letter.'
 )
 if confirm_installation.lower() != "y":
     print("Quiting the script, but run the script again if you change your mind.")
@@ -233,4 +231,4 @@ else:
     )
 
 print("You can reboot now, if there were no errors.")
-print("To reboot run \"reboot -h now\"")
+print('To reboot run "reboot -h now"')
