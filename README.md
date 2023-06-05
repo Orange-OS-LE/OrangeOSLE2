@@ -13,3 +13,4 @@ And after the install, reboot then run this:
 ```
 sudo curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/postinstall.py > postinstall.py && sudo python3 postinstall.py && rm postinstall.py
 ```
+This is very much a work in progress
