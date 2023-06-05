@@ -17,14 +17,14 @@ def install_app(name):
     os.system(
         f"curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/apps/{name}/{name}.png > {name}.png"
     )
-    os.system("cp {name}.png /opt/{name}.png")
-    os.system("rm {name}.png")
+    os.system(f"cp {name}.png /opt/{name}.png")
+    os.system(f"rm {name}.png")
 
     os.system(
-        "curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/apps/{name}/{name}.desktop > {name}.desktop"
+        f"curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/apps/{name}/{name}.desktop > {name}.desktop"
     )
-    os.system("cp {name}.desktop /usr/share/applications/")
-    os.system("rm {name}.desktop")
+    os.system(f"cp {name}.desktop /usr/share/applications/")
+    os.system(f"rm {name}.desktop")
 
 
 install_app("ocular")
