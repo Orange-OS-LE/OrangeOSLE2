@@ -4,5 +4,5 @@ Version=1.0
 Type=Application
 Terminal=false
 Exec=xdg-open 'https://auth.itinerary.eu.org/'
-Name=Scratchauth
+Name=Scratch Auth
 Icon=/opt/scratchauth.png
