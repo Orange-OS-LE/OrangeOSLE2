@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Exec=xdg-open 'https://itinerary.eu.org/'
+Name=Itinerary
+Icon=/opt/itinerary.png

@@ -30,5 +30,6 @@ def install_app(name):
 install_app("ocular")
 install_app("scratchstats")
 install_app("aviate")
+install_app("itinerary")
 
 print('You can now reboot by running "sudo reboot -h now"')
