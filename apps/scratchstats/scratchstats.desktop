@@ -4,5 +4,5 @@ Version=1.0
 Type=Application
 Terminal=false
 Exec=xdg-open 'https://scratchstats.com'
-Name=Ocular
+Name=Scratchstats
 Icon=/opt/scratchstats.png
