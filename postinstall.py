@@ -12,6 +12,8 @@ os.system("systemctl enable gdm.service")
 
 os.system("pacman -S --noconfirm xdg-utils")
 
+os.system("pacman -S vim")
+
 
 def install_app_link(name):
     os.system(
