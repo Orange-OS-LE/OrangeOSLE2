@@ -50,4 +50,9 @@ install_app_link("scratchstats")
 install_app_link("aviate")
 install_app_link("itinerary")
 
+install_app_appimage(
+    "turbowarp",
+    "https://github.com/TurboWarp/desktop/releases/download/v1.7.1/TurboWarp-linux-arm64-1.7.1.AppImage",
+)
+
 print('You can now reboot by running "sudo reboot -h now"')
