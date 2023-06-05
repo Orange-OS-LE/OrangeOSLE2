@@ -13,7 +13,7 @@ os.system("systemctl enable gdm.service")
 os.system("pacman -S --noconfirm xdg-utils")
 
 
-def install_app(name):
+def install_app_link(name):
     os.system(
         f"curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/apps/{name}/{name}.png > {name}.png"
     )
@@ -27,9 +27,27 @@ def install_app(name):
     os.system(f"rm {name}.desktop")
 
 
-install_app("ocular")
-install_app("scratchstats")
-install_app("aviate")
-install_app("itinerary")
+def install_app_appimage(name, appimagelink):
+    os.system(
+        f"curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/apps/{name}/{name}.png > {name}.png"
+    )
+    os.system(f"cp {name}.png /opt/{name}.png")
+    os.system(f"rm {name}.png")
+
+    os.system(
+        f"curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/apps/{name}/{name}.desktop > {name}.desktop"
+    )
+    os.system(f"cp {name}.desktop /usr/share/applications/")
+    os.system(f"rm {name}.desktop")
+
+    os.system(f"curl {appimagelink} > {name}.AppImage")
+    os.system(f"cp {name}.AppImage /opt/")
+    os.system("chmod u+x /opt/{name}.AppImage")
+
+
+install_app_link("ocular")
+install_app_link("scratchstats")
+install_app_link("aviate")
+install_app_link("itinerary")
 
 print('You can now reboot by running "sudo reboot -h now"')
