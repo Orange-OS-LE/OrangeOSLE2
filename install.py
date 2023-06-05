@@ -164,7 +164,7 @@ user_config.write(
 "sys-encoding": "utf-8",
 "timezone": "{time_zone}",
 "version": "2.5.0",
-"packages": ["python3", "neofetch"],
+"packages": ["python3", "neofetch", "wget"],
 "custom-commands": []
 {'}'}"""
 )

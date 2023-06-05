@@ -12,7 +12,7 @@ os.system("systemctl enable gdm.service")
 
 os.system("pacman -S --noconfirm xdg-utils")
 
-os.system("pacman -S vim")
+os.system("pacman -S vim --noconfirm")
 
 
 def install_app_link(name):
@@ -42,9 +42,9 @@ def install_app_appimage(name, appimagelink):
     os.system(f"cp {name}.desktop /usr/share/applications/")
     os.system(f"rm {name}.desktop")
 
-    os.system(f"curl {appimagelink} > {name}.AppImage")
+    os.system(f"wget -O {name}.AppImage {appimagelink}")
     os.system(f"cp {name}.AppImage /opt/")
-    os.system(f"chmod u+x /opt/{name}.AppImage")
+    os.system(f"chmod +x /opt/{name}.AppImage")
 
 
 install_app_link("ocular")
