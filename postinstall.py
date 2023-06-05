@@ -1,7 +1,7 @@
 import os
 
 try:
-    os.system("pacman -Syu")
+    os.system("pacman -Syu --noconfirm")
 except PermissionError:
     print('You must run this script by running "sudo python3 postinstall.py"')
     quit(0)
