@@ -51,6 +51,7 @@ install_app_link("ocular")
 install_app_link("scratchstats")
 install_app_link("aviate")
 install_app_link("itinerary")
+install_app_link("scratchauth")
 
 install_app_appimage(
     "turbowarp",
