@@ -42,7 +42,7 @@ def install_app_appimage(name, appimagelink):
 
     os.system(f"curl {appimagelink} > {name}.AppImage")
     os.system(f"cp {name}.AppImage /opt/")
-    os.system("chmod u+x /opt/{name}.AppImage")
+    os.system(f"chmod u+x /opt/{name}.AppImage")
 
 
 install_app_link("ocular")
