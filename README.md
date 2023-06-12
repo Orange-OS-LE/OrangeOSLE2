@@ -7,7 +7,12 @@ This OS will have all major AT projects included as links on the desktop or apps
 
 # Development Preview
 
-Download the latest iso in the releases section, then boot it up. When you are in it, run
+Download the latest iso in the releases section, then boot it up. 
+Due to a temporary problem with archinstall, you should run
+```
+sed -i 's|pacman-init|reflector|g' /usr/lib/python3.11/site-packages/archinstall/examples/guided.py
+```
+After that, run
 ```
 chmod +x /usr/local/bin/orangeinstall
 orangeinstall
@@ -33,7 +38,12 @@ And Orange OS LE 2 should be installed. Make an issue if something doesn't work 
 
 # Nightly Version
 
-To test the nightly version, download the latest arch linux ISO [here](https://archlinux.org/download/), then run
+To test the nightly version, download the latest arch linux ISO [here](https://archlinux.org/download/), boot it, then
+due to a temporary problem with archinstall, you should run
+```
+sed -i 's|pacman-init|reflector|g' /usr/lib/python3.11/site-packages/archinstall/examples/guided.py
+```
+after that, run
 ```
 curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/install.py > install.py && python3 install.py
 ```
