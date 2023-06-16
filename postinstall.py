@@ -14,6 +14,8 @@ os.system("pacman -S --noconfirm xdg-utils")
 
 os.system("pacman -S vim --noconfirm")
 
+os.system("pacman -S firefox --noconfirm")
+
 
 def install_app_link(name):
     os.system(
