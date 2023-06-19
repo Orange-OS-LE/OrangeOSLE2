@@ -170,13 +170,13 @@ user_config.write(
 )
 user_config.close()
 # user creds
-print("Now we will setup the disks for you. Unfourtuanatley, we can't offer to let you")
-print("do the disk partioning, but we might offer this in future.")
+print("Now we will setup the disks for you. Unfortunately, we can't offer to let you")
+print("do the disk partioning, but we might offer this in the future.")
 confirm_installation = input(
     'This will delete all data on the disk you have chosen,\nIf you agree to the conditions, submit with a "Y". Otherwise, submit with any other letter.'
 )
 if confirm_installation.lower() != "y":
-    print("Quiting the script, but run the script again if you change your mind.")
+    print("Quitting the script, but run the script again if you change your mind.")
     quit(0)
 else:
     print("Here we go...")
