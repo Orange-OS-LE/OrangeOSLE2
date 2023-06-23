@@ -18,109 +18,16 @@ This program is an installer for Orange OS LE 2, you can find more information i
 
 
 import sys, os
-
-hard_drive = ""
-host_name = ""
-keyboard_layout = ""
-language = ""
-time_zone = ""
-location = ""
+from installClass import installerClass
 
 
-def ui():
-    global hard_drive, host_name, keyboard_layout, language, time_zone, location
-    print("Welcome to the Orange OS LE 2 install script.")
-    print("We will ask you a few questions to make sure you get a great configuration.")
-
-    hard_drive = input("Please input your disk drive file, like /dev/sda: ")
-    host_name = input(
-        "Please enter the name you want to give your computer (a.k.a your hostname): "
-    )
-    keyboard_layout = input("Now enter your keyboard layout, like uk or us: ")
-
-    language = input(
-        'Now please enter your locale language. This should be something like "en_US": '
-    )
-
-    time_zone = input(
-        "Now we need your timezone, this is usually in the format of <Continent>/<City>, e.g Europe/Paris: "
-    )
-
-    location = input(
-        "Finally, we need to know what country you live in. If you don't want to answer this, enter worldwide."
-    ).capitalize()
-
-    print("Okay, now we are going to setup users for you.")
-    user_creds = open("user_credentials.json", "w")
-    user_creds.write(
-        """{
-        "!users": ["""
-    )
-    users_no = int(input("First, how many users do you want the system to hold: "))
-    for x in range(0, users_no):
-        user_creds.write("{\n")
-        username = input(f"Ok what the you want the username of user {x + 1} to be: ")
-        password = input(f"Now, what password do you want to give {username}: ")
-        superuser = input(
-            f"Lastly do you want {username} to be a superuser? Leave blank if you don't: "
-        )
-        user_creds.write(f'"!password": "{password}",\n')
-        if superuser:
-            user_creds.write('"sudo": true,\n')
-        else:
-            user_creds.write('"sudo": false,\n')
-
-        user_creds.write(f'"username": "{username}"\n')
-        user_creds.write("}")
-        if x == users_no - 1:
-            user_creds.write("\n")
-        else:
-            user_creds.write(",\n")
-    user_creds.write("]\n}")
-    user_creds.close()
-
-
-def config_file():
-    global hard_drive, host_name, keyboard_layout, language, time_zone, location
-    config = open(sys.argv[1], "r")
-    hard_drive = config.readline().replace("\n", "")
-    host_name = config.readline().replace("\n", "")
-    keyboard_layout = config.readline().replace("\n", "")
-    language = config.readline().replace("\n", "")
-    time_zone = config.readline().replace("\n", "")
-    location = config.readline().capitalize().replace("\n", "")
-
-    user_creds = open("user_credentials.json", "w")
-    user_creds.write(
-        """{
-        "!users": ["""
-    )
-    users_no = int(config.readline().replace("\n", ""))
-    for x in range(0, users_no):
-        user_creds.write("{\n")
-        username = config.readline().replace("\n", "")
-        password = config.readline().replace("\n", "")
-        superuser = config.readline().replace("\n", "")
-        user_creds.write(f'"!password": "{password}",\n')
-        if superuser:
-            user_creds.write('"sudo": true,\n')
-        else:
-            user_creds.write('"sudo": false,\n')
-
-        user_creds.write(f'"username": "{username}"\n')
-        user_creds.write("}")
-        if x == users_no - 1:
-            user_creds.write("\n")
-        else:
-            user_creds.write(",\n")
-    user_creds.write("]\n}")
-    user_creds.close()
+installer = installerClass()
 
 
 if sys.argv.__len__() == 2:
-    config_file()
+    installer.config_file()
 else:
-    ui()
+    installer.ui()
 
 
 user_config = open("user_configuration.json", "w")
@@ -134,16 +41,16 @@ user_config.write(
 "config_version": "2.5.0",
 "debug": false,
 "harddrives": [
-    "{hard_drive}"
+    "{installer.hard_drive}"
 ],
 "kernels": [
     "linux"
 ],
 "swap": true,
-"keyboard-language": "{keyboard_layout}",
-"mirror-region": "{location}",
-"hostname": "{host_name}",
-"keyboard-layout": "{keyboard_layout}",
+"keyboard-language": "{installer.keyboard_layout}",
+"mirror-region": "{installer.location}",
+"hostname": "{installer.host_name}",
+"keyboard-layout": "{installer.keyboard_layout}",
 "mount_point": null, 
 "nic": {'{'}
         "dhcp": true,
@@ -160,9 +67,9 @@ user_config.write(
 {'}'},
 "script": "guided",
 "silent": false,
-"sys-language": "{language}",
+"sys-language": "{installer.language}",
 "sys-encoding": "utf-8",
-"timezone": "{time_zone}",
+"timezone": "{installer.time_zone}",
 "version": "2.5.0",
 "packages": ["python3", "neofetch", "wget"],
 "custom-commands": []
@@ -183,7 +90,7 @@ else:
 user_disks = open("user_disk_layout.json", "w")
 user_disks.write(
     f"""{'{'}
-    "{hard_drive}": {'{'}
+    "{installer.hard_drive}": {'{'}
         "partitions": [
             {'{'}
                 "boot": true,
