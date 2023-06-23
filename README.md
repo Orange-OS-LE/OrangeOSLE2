@@ -45,7 +45,9 @@ sed -i 's|pacman-init|reflector|g' /usr/lib/python3.11/site-packages/archinstall
 ```
 after that, run
 ```
-curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/install.py > install.py && python3 install.py
+curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/install.py > install.py
+curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/installClass.py > installClass.py
+python3 install.py
 ```
 And after the install, reboot, log in then run this: 
 ```
