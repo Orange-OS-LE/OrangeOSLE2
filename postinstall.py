@@ -1,4 +1,4 @@
-import os
+import os, string
 
 try:
     os.system("pacman -Syu --noconfirm")
@@ -6,7 +6,11 @@ except PermissionError:
     print('You must run this script by running "sudo python3 postinstall.py"')
     quit(0)
 
-os.system("pacman -S --noconfirm xdg-utils vim firefox git xorg xorg-server gnome gdm")
+with open('postinstall.pkgs') as pkgs:
+    while pkgs.readable():
+        for line in pkgs:
+            os.system(f'pacman -S {line.strip()}')
+
 os.system("systemctl enable gdm.service")
 
 def install_apps():
