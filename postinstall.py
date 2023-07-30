@@ -15,21 +15,12 @@ os.system("pacman -S --noconfirm xdg-utils")
 os.system("pacman -S vim --noconfirm")
 
 os.system("pacman -S firefox --noconfirm")
+os.system("pacman -S git")
 
 
-def install_app_link(name):
-    os.system(
-        f"curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/apps/{name}/{name}.png > {name}.png"
-    )
-    os.system(f"cp {name}.png /opt/{name}.png")
-    os.system(f"rm {name}.png")
-
-    os.system(
-        f"curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/apps/{name}/{name}.desktop > {name}.desktop"
-    )
-    os.system(f"cp {name}.desktop /usr/share/applications/")
-    os.system(f"rm {name}.desktop")
-
+def install_app_links():
+    os.system("git clone https://github.com/OrangeOSLE2/PKGBUILDs"
+    os.system("pacman -U PKGBUILDs/packages/oosle-shortcuts-1.0-1-any.pkg.tar.zst")
 
 def install_app_appimage(name, appimagelink):
     os.system(
@@ -47,15 +38,7 @@ def install_app_appimage(name, appimagelink):
     os.system(f"wget -O {name}.AppImage {appimagelink}")
     os.system(f"cp {name}.AppImage /opt/")
     os.system(f"chmod +x /opt/{name}.AppImage")
-
-
-install_app_link("ocular")
-install_app_link("scratchstats")
-install_app_link("aviate")
-install_app_link("itinerary")
-install_app_link("scratchauth")
-install_app_link("scratchcommunityprojects")
-install_app_link("postpercent")
+)
 
 install_app_appimage(
     "turbowarp",
