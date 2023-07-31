@@ -17,7 +17,7 @@ with open('postinstall.srvcs') as srvcs:
             os.system(f'sudo systemctl enable {line.strip()}')
 
 def install_apps():
-    os.system("git clone https://github.com/OrangeOSLE2/PKGBUILDs"
+    os.system("git clone https://github.com/OrangeOSLE2/PKGBUILDs")
     os.system("pacman -U PKGBUILDs/packages/oosle-shortcuts-1.0-1-any.pkg.tar.zst")
     os.system("pacman -U PKGBUILDs/packages/turbowarp-desktop-bin-1.8.1-1-any.pkg.tar.zst")
 
