@@ -49,7 +49,6 @@ And after the install, reboot, log in then run this:
 ```
 curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/postinstall.py > postinstall.py
 curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/postinstall.pkgs > postinstall.pkgs
-curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/postinstall.srvcs > postinstall.srcvs
 sudo python3 postinstall.py
 rm postinstall.*
 ```
