@@ -11,10 +11,7 @@ with open('postinstall.pkgs') as pkgs:
         for line in pkgs:
             os.system(f'pacman -S {line.strip()} --no-confirm')
 
-with open('postinstall.srvcs') as srvcs:
-    while srvcs.readable():
-        for line in pkgs:
-            os.system(f'sudo systemctl enable {line.strip()}')
+os.system("sudo systemctl enable gdm.service")
 
 def install_apps():
     os.system("git clone https://github.com/OrangeOSLE2/PKGBUILDs")
