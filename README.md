@@ -38,11 +38,7 @@ And Orange OS LE 2 should be installed. Make an issue if something doesn't work 
 
 # Nightly Version
 
-To test the nightly version, download the latest arch linux ISO [here](https://archlinux.org/download/), boot it, then
-due to a temporary problem with archinstall, you should run
-```
-sed -i 's|pacman-init|reflector|g' /usr/lib/python3.11/site-packages/archinstall/examples/guided.py
-```
+To test the nightly version, download the latest arch linux ISO [here](https://archlinux.org/download/) and boot it.
 after that, run
 ```
 curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/install.py > install.py
@@ -51,6 +47,10 @@ python3 install.py
 ```
 And after the install, reboot, log in then run this: 
 ```
-sudo curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/postinstall.py > postinstall.py && sudo python3 postinstall.py && rm postinstall.py
+curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/postinstall.py > postinstall.py
+curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/postinstall.pkgs > postinstall.pkgs
+curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/postinstall.srvcs > postinstall.srcvs
+sudo python3 postinstall.py
+rm postinstall.*
 ```
 This is very much a work in progress. Make an issue if something doesn't work or goes wrong.
