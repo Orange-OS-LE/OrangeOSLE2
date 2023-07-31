@@ -5,6 +5,8 @@ A revival of Orange OS.
 
 This OS will have all major AT projects included as links on the desktop or apps.
 
+If you are looking for build files, see https://github.com/Orange-OS-LE/Build
+
 # Development Preview
 
 Download the latest iso in the releases section, then boot it up. 
