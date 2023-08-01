@@ -19,6 +19,7 @@ This program is an installer for Orange OS LE 2, you can find more information i
 
 import sys, os
 
+
 class installerClass:
     hard_drive = ""
     host_name = ""
@@ -27,28 +28,30 @@ class installerClass:
     time_zone = ""
     location = ""
 
-
     def ui(self):
         print("Welcome to the Orange OS LE 2 install script.")
-        print("We will ask you a few questions to make sure you get a great configuration.")
-
-        self.hard_drive = input("Please input your disk drive file, like /dev/sda: ")
-        self.host_name = input(
-            "Please enter the name you want to give your computer (a.k.a your hostname): "
-        )
-        self.keyboard_layout = input("Now enter your keyboard layout, like uk or us: ")
-
-        self.language = input(
-            'Now please enter your locale language. This should be something like "en_US": '
+        print(
+            "We will ask you a few questions to make sure you get a great configuration."
         )
 
-        self.time_zone = input(
-            "Now we need your timezone, this is usually in the format of <Continent>/<City>, e.g Europe/Paris: "
-        )
+        self.hard_drive = input("Disk drive file (Default: /dev/sda): ")
+        if self.hard_drive == "":
+            self.hard_drive == "/dev/sda"
+        self.host_name = input("Hostname (Default: OrangeOSLE2): ")
+        if self.host_name == "":
+            self.host_name = "OrangeOSLE2"
 
-        self.location = input(
-            "Finally, we need to know what country you live in. If you don't want to answer this, enter worldwide."
-        ).capitalize()
+        self.keyboard_layout = input("Keyboard layout (Default: US): ").lower()
+        if self.keyboard_layout == "":
+            self.keyboard_layout = "us"
+
+        self.language = input("Locale (Default: en_US): ")
+        if self.language == "":
+            self.language = "en_US"
+
+        self.time_zone = input("Timezone (Default: America/New_York): ")
+        if self.time_zone == "":
+            self.time_zone = "America/New_York"
 
         print("Okay, now we are going to setup users for you.")
         user_creds = open("user_credentials.json", "w")
@@ -59,7 +62,9 @@ class installerClass:
         users_no = int(input("First, how many users do you want the system to hold: "))
         for x in range(0, users_no):
             user_creds.write("{\n")
-            username = input(f"Ok what the you want the username of user {x + 1} to be: ")
+            username = input(
+                f"Ok what the you want the username of user {x + 1} to be: "
+            )
             password = input(f"Now, what password do you want to give {username}: ")
             superuser = input(
                 f"Lastly do you want {username} to be a superuser? Leave blank if you don't: "
@@ -78,7 +83,6 @@ class installerClass:
                 user_creds.write(",\n")
         user_creds.write("]\n}")
         user_creds.close()
-
 
     def config_file(self):
         config = open(sys.argv[1], "r")
