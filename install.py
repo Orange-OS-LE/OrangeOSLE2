@@ -109,7 +109,7 @@ user_config.write(
 "locale-config": {'{'}
     "kb-layout": "{installer.keyboard_layout}",
     "sys-enc": "UTF-8",
-    "sys-lang": "{installer.language}",
+    "sys-lang": "{installer.language}"
 {'}'},
 "mirror-config": {'{'}
 "custom-mirrors": [],
@@ -133,7 +133,7 @@ user_config.write(
 "profile": {'{'}
 "custom_settings": {'{'}{'}'},
 "details": [],
-"main": "Minimal",
+"main": "Minimal"
 {'}'}
 {'}'},
 "script": "guided",
