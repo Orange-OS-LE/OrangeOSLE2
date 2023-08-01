@@ -141,6 +141,7 @@ user_config.write(
 "swap": true,
 "timezone": "{installer.time_zone}",
 "version": "2.6.0"
+{'}'}
 """
 )
 user_config.close()
