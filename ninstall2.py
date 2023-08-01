@@ -44,7 +44,7 @@ user_config.write(
         "config_type": "default_layout",
         "device_modifications": [
             {'{'}
-                "device": {installer.hard_drive},
+                "device": {installer.hard_drive}
                 "partitions": [
                     {'{'}
                         "btrfs": [],
