@@ -50,7 +50,7 @@ user_config.write(
 "btrfs": [],
 "flags": [
 "Boot"
-]
+],
 "fs-type": "fat-32",
 "length": {'{'}
 "sector-size": null,
