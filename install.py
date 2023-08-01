@@ -33,52 +33,118 @@ else:
 user_config = open("user_configuration.json", "w")
 user_config.write(
     f"""{'{'}
-"additional-repositories": "",
-"audio": "pipewire",
-"bootloader": "grub-install",
-"filesystem": "ext4",
-"HSM": null,
-"config_version": "2.5.0",
-"debug": false,
-"harddrives": [
-    "{installer.hard_drive}"
+"additional-repositories": [],
+"archinstall-language": "English",
+"audio_config": {'{'}
+"audio": "pipewire"
+{'}'},
+"bootloader": "Grub",
+"config_version": "2.6.0",
+"disk_config": {'{'}
+"config_type": "default_layout",
+"device-modifications": [
+{'{'}
+"device": "{installer.hard_drive}",
+"partions": [
+{'{'}
+"btrfs": [],
+"flags": [
+"Boot"
+]
+"fs-type": "fat-32",
+"length": {'{'}
+"sector-size": null,
+"total-size": null,
+"unit": "MiB",
+"value": 512
+{'}'},
+"mount-options": [],
+"mountpoint": "/boot",
+"obj-id": "2c3fa2d5-2c79-4fab-86ec-22d0ea1543c0",
+"start": {'{'}
+"sector_size": null,
+"total_size": null,
+"unit": "MiB",
+"value": 1
+{'}'},
+"status": "create",
+"type": "primary"
+{'}'},
+{'{'}
+"btrfs": [],
+"flags": [],
+"fs_type": "ext4",
+"length": {'{'}
+"sector_size": null,
+"total_size": {'{'}
+"sector_size": null,
+"total_size": null,
+"unit": "B",
+"value": 250148290560
+{'}'},
+"unit": "Percent",
+"value": 100
+{'}'},
+"mount_options": [],
+"mountpoint": "/home",
+"obj_id": "ce58b139-f041-4a06-94da-1f8bad775d3f",
+"start": {'{'}
+"sector_size": null,
+"total_size": null,
+"unit": "GiB",
+"value": 20
+{'}'},
+"status": "create",
+"type": "primary"
+{'}'}
 ],
+"wipe": true
+{'}'}
+]
+{'}'},
+"hostname": "{installer.host_name}",
 "kernels": [
     "linux"
 ],
-"swap": true,
-"keyboard-language": "{installer.keyboard_layout}",
-"mirror-region": "{installer.location}",
-"hostname": "{installer.host_name}",
-"keyboard-layout": "{installer.keyboard_layout}",
-"mount_point": null, 
-"nic": {'{'}
-        "dhcp": true,
-        "dns": null,
-        "gateway": null,
-        "iface": null,
-        "ip": null,
-        "type": "nm"
+"locale-config": {'{'}
+    "kb-layout": "{installer.keyboard_layout}",
+    "sys-enc": "UTF-8",
+    "sys-lang": "{installer.language}",
 {'}'},
+"mirror-config": {'{'}
+"custom-mirrors": [],
+"mirror-regions": {'{'}
+"Worldwide": [
+"https://geo.mirror.pkgbuild/$repo/os/$arch"
+]
+{'}'}
+{'}'},
+"network-config": {'{'}
+"type": "nm"
+{'}'},
+"no-pkg-lookups": false,
 "ntp": true,
-"plugin": null,
+"offline": false,
+"packages": [],
+"parallel downloads": 0,
+"profile_config" : {'{'}
+"gfx-driver": null,
+"greeter": null,
 "profile": {'{'}
-    "path": "/usr/lib/python3.11/site-packages/archinstall/profiles/minimal.py"
+"custom_settings": {'{'}{'}'},
+"details": [],
+"main": "Minimal",
+{'}'}
 {'}'},
 "script": "guided",
 "silent": false,
-"sys-language": "{installer.language}",
-"sys-encoding": "utf-8",
+"swap": true,
 "timezone": "{installer.time_zone}",
-"version": "2.5.0",
-"packages": ["python3", "neofetch", "wget"],
-"custom-commands": []
-{'}'}"""
+"version": "2.6.0",
+"""
 )
 user_config.close()
 # user creds
-print("Now we will setup the disks for you. Unfortunately, we can't offer to let you")
-print("do the disk partioning, but we might offer this in the future.")
 confirm_installation = input(
     'This will delete all data on the disk you have chosen,\nIf you agree to the conditions, submit with a "Y". Otherwise, submit with any other letter.'
 )
@@ -87,48 +153,13 @@ if confirm_installation.lower() != "y":
     quit(0)
 else:
     print("Here we go...")
-user_disks = open("user_disk_layout.json", "w")
-user_disks.write(
-    f"""{'{'}
-    "{installer.hard_drive}": {'{'}
-        "partitions": [
-            {'{'}
-                "boot": true,
-                "encrypted": false,
-                "filesystem": {'{'}
-                    "format": "fat32"
-                {'}'},
-                "mountpoint": "/boot",
-                "size": "{'203MiB' if not os.path.exists("/sys/firmware/efi") else '512MiB'}",
-                "start": "{'3MiB' if not os.path.exists("/sys/firmware/efi") else '1MiB'}",
-                "type": "primary",
-                "wipe": true
-            {'}'},
-            {'{'}
-                "encrypted": false,
-                "filesystem": {'{'}
-                    "format": "ext4",
-                    "mount_options": []
-                {'}'},
-                "mountpoint": "/",
-                "size": "100%",
-                "start": "{'206MiB' if not os.path.exists("/sys/firmware/efi") else '513MiB'}",
-                "type": "primary",
-                "wipe": true
-            {'}'}
-        ],
-        "wipe": true
-    {'}'}
-{'}'}"""
-)
-user_disks.close()
 if sys.argv.__len__() == 2:
     os.system(
-        "sudo archinstall --silent --config ./user_configuration.json --creds ./user_credentials.json --disk_layouts ./user_disk_layout.json"
+        "sudo archinstall --silent --config ./user_configuration.json --creds ./user_credentials.json"
     )
 else:
     os.system(
-        "sudo archinstall --silent --config ./user_configuration.json --creds ./user_credentials.json --disk_layouts ./user_disk_layout.json"
+        "sudo archinstall --silent --config ./user_configuration.json --creds ./user_credentials.json"
     )
 
 print("You can reboot now, if there were no errors.")
