@@ -44,7 +44,7 @@ user_config.write(
         "config_type": "default_layout",
         "device_modifications": [
             {'{'}
-                "device": {installer.hard_drive}
+                "device": "{installer.hard_drive}"
                 "partitions": [
                     {'{'}
                         "btrfs": [],
@@ -124,14 +124,14 @@ user_config.write(
             {'}'}
         ]
     {'}'},
-    "hostname": {installer.host_name},
+    "hostname": "{installer.host_name}",
     "kernels": [
         "linux"
     ],
-    "keyboard-layout": {installer.keyboard_layout},
+    "keyboard-layout": "{installer.keyboard_layout}",
     "mirror-region": {'{'}
         "Worldwide": {'{'}
-            "https://geo.mirror.pkgbuild/$repo/os/$arch": true,
+            "https://geo.mirror.pkgbuild/$repo/os/$arch": true
         {'}'}
     {'}'},
     "nic": {'{'}
@@ -160,8 +160,8 @@ user_config.write(
     "silent": false,
     "swap": true,
     "sys-encoding": "utf-8",
-    "sys-language": {installer.language},
-    "timezone": {installer.time_zone},
+    "sys-language": "{installer.language}",
+    "timezone": "{installer.time_zone}",
     "version": "2.5.2"
 {'}'}
 """

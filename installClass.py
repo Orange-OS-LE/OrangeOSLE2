@@ -17,7 +17,7 @@ This program is an installer for Orange OS LE 2, you can find more information i
 """
 
 
-import sys, os
+import sys
 
 
 class installerClass:
