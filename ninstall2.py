@@ -44,7 +44,7 @@ user_config.write(
         "config_type": "default_layout",
         "device_modifications": [
             {'{'}
-                "device": "{installer.hard_drive}"
+                "device": "{installer.hard_drive}",
                 "partitions": [
                     {'{'}
                         "btrfs": [],
@@ -147,7 +147,7 @@ user_config.write(
     "offline": false,
     "packages": [],
     "parallel downloads": 0,
-    profile_config" : {'{'}
+    "profile_config" : {'{'}
         "gfx-driver": null,
         "greeter": null,
         "profile": {'{'}

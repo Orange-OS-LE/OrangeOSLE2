@@ -36,7 +36,7 @@ class installerClass:
 
         self.hard_drive = input("Disk drive file (Default: /dev/sda): ")
         if self.hard_drive == "":
-            self.hard_drive == "/dev/sda"
+            self.hard_drive = "/dev/sda"
         self.host_name = input("Hostname (Default: OrangeOSLE2): ")
         if self.host_name == "":
             self.host_name = "OrangeOSLE2"
