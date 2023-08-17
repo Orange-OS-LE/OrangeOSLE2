@@ -114,7 +114,7 @@ user_config.write(
                             "sector_size": null,
                             "total_size": null,
                             "unit": "GiB",
-                            "value": 20
+                            "value": 10
                         {'}'},
                         "status": "create",
                         "type": "primary"
