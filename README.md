@@ -40,7 +40,7 @@ And Orange OS LE 2 should be installed. Make an issue if something doesn't work 
 
 # Nightly Version
 
-To test the nightly version, download the latest arch linux ISO [here](https://archlinux.org/download/) and boot it.
+To test the nightly version, download the latest arch linux ISO [here](https://archlinux.org/download/) and boot it The iso should be atleast version 2023.08.01.
 after that, run
 ```
 curl https://raw.githubusercontent.com/Orange-OS-LE/OrangeOSLE2/main/install.py > install.py
