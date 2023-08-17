@@ -145,7 +145,7 @@ user_config.write(
     "no_pkg_lookups": false,
     "ntp": true,
     "offline": false,
-    "packages": [],
+    "packages": ["networkmanager"],
     "parallel downloads": 0,
     "profile_config" : {'{'}
         "gfx-driver": null,
