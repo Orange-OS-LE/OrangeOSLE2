@@ -10,14 +10,10 @@ If you are looking for build files, see https://github.com/Orange-OS-LE/Build
 # Development Preview
 
 Download the latest iso in the releases section, then boot it up. 
-Due to a temporary problem with archinstall, you should run
-```
-sed -i 's|pacman-init|reflector|g' /usr/lib/python3.11/site-packages/archinstall/examples/guided.py
-```
+
 After that, run
 ```
-chmod +x /usr/local/bin/orangeinstall
-orangeinstall
+python3 install.py
 ```
 
 This will start the installer.
